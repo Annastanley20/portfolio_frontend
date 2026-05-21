@@ -15,6 +15,11 @@
             --accent-hover: #2980b9;
         }
 
+        /* Smooth Scrolling Configuration */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--primary-bg);
@@ -24,12 +29,44 @@
             line-height: 1.6;
         }
 
-        /* Hero Section with Modern Background Color */
+        /* Top Navigation Header Styling */
+        nav {
+            background-color: var(--card-bg);
+            padding: 15px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav .logo {
+            font-weight: 700;
+            color: #1e3c72;
+            font-size: 1.2em;
+        }
+
+        nav .menu a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: color 0.2s;
+        }
+
+        nav .menu a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section Styling */
         .hero-banner {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
             text-align: center;
-            padding: 50px 20px;
+            padding: 60px 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
@@ -47,7 +84,7 @@
         }
 
         .hero-banner h1 { margin: 10px 0; font-size: 2.3em; font-weight: 600; }
-        .hero-banner p { font-size: 1.1em; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        .hero-banner p { font-size: 1.1em; opacity: 0.9; max-width: 600px; margin: 0 auto; text-align: justify; }
 
         .main-container {
             max-width: 900px;
@@ -76,7 +113,7 @@
             gap: 10px;
         }
 
-        /* Clickable Interactive Skills badges */
+        /* Interactive Skills badges */
         .skills-grid {
             display: flex;
             flex-wrap: wrap;
@@ -116,14 +153,18 @@
             justify-content: space-between;
         }
 
-        /* Clickable Dynamic Project Cards */
+        /* Project Cards Styling */
         .projects-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
 
-        @media(max-width: 600px) { .projects-layout { grid-template-columns: 1fr; } }
+        @media(max-width: 600px) { 
+            .projects-layout { grid-template-columns: 1fr; } 
+            nav { flex-direction: column; gap: 10px; }
+            nav .menu a { margin: 0 10px; }
+        }
 
         .clickable-project-card {
             background: #fafbfc;
@@ -155,6 +196,7 @@
             color: var(--text-muted);
             font-size: 0.95em;
             margin: 0 0 15px 0;
+            text-align: justify;
         }
 
         .project-action-text {
@@ -163,7 +205,7 @@
             font-weight: 500;
         }
 
-        /* Clickable Contact Links */
+        /* Contact Links Styling */
         .contact-flex {
             display: flex;
             flex-wrap: wrap;
@@ -191,10 +233,21 @@
 </head>
 <body>
 
+    <!-- Header Navigation Menu (Clickable Anchor Links) -->
+    <nav>
+        <div class="logo">AM.</div>
+        <div class="menu">
+            <a href="#skills-section">Skills</a>
+            <a href="#qualifications-section">Qualifications</a>
+            <a href="#projects-section">Projects</a>
+            <a href="#contact-section">Contact</a>
+        </div>
+    </nav>
+
     <div class="hero-banner">
         <div class="profile-wrapper">
-            <!-- Modern Placeholder profile picture -->
-            <img src="www.linkedin.com/in/anna-stanley-577021309" alt="Anna Mmary">
+            <!-- Inasoma picha ya anna.jpg ikikosekana inaweka avatar nzuri ya data science -->
+            <img src="anna.jpg" alt="Anna Mmary" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop'">
         </div>
         <h1 id="name">Loading...</h1>
         <p id="profile"></p>
@@ -202,25 +255,25 @@
 
     <div class="main-container">
         <!-- SKILLS SECTION -->
-        <div class="portfolio-card">
+        <div class="portfolio-card" id="skills-section">
             <h2><i class="fa-solid fa-brain"></i> Professional Skills</h2>
             <div id="skills" class="skills-grid"></div>
         </div>
 
         <!-- QUALIFICATIONS SECTION -->
-        <div class="portfolio-card">
+        <div class="portfolio-card" id="qualifications-section">
             <h2><i class="fa-solid fa-graduation-cap"></i> Academic Qualifications</h2>
             <ul id="qualifications" class="qual-list"></ul>
         </div>
 
         <!-- PROJECTS SECTION -->
-        <div class="portfolio-card">
+        <div class="portfolio-card" id="projects-section">
             <h2><i class="fa-solid fa-code-branch"></i> Practical Projects</h2>
             <div id="projects" class="projects-layout"></div>
         </div>
 
         <!-- CONTACT SECTION -->
-        <div class="portfolio-card">
+        <div class="portfolio-card" id="contact-section">
             <h2><i class="fa-solid fa-address-book"></i> Connect with Me</h2>
             <div id="contact" class="contact-flex"></div>
         </div>
