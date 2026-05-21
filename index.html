@@ -3,265 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anna Mmary - Professional Data Science Portfolio</title>
+    <title>Anna Mmary | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --google-blue: #1a73e8;
-            --google-grey: #5f6368;
-            --text-dark: #202124;
-            --bg-light: #f8f9fa;
-            --white: #ffffff;
-            --border-color: #dadce0;
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --accent: #555555;
+            --light-grey: #f9f9f9;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body { 
-            font-family: 'Google Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            line-height: 1.6; 
-            margin: 0; 
-            padding: 0; 
-            background-color: var(--bg-light); 
-            color: var(--text-dark); 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg); 
+            color: var(--text); 
+            line-height: 1.6;
         }
 
-        .hero-section {
-            background-color: var(--white);
-            border-bottom: 1px solid var(--border-color);
-            text-align: center;
-            padding: 60px 20px;
+        /* Navigation */
+        nav {
+            padding: 30px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 1000;
         }
 
-        .profile-container {
-            position: relative;
-            display: inline-block;
-        }
+        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; }
 
-        .profile-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--google-blue);
-            padding: 4px;
-            background-color: var(--white);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .hero-section h1 { 
-            margin: 15px 0 5px 0; 
-            font-size: 2.4em; 
-            font-weight: 500;
-            color: var(--text-dark); 
-        }
-
-        .hero-section .subtitle { 
-            font-size: 1.2em; 
-            color: var(--google-blue); 
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-
-        .hero-section .bio { 
-            font-size: 1.05em; 
-            color: var(--google-grey); 
-            max-width: 650px; 
-            margin: 0 auto; 
-        }
-
-        .container { 
-            max-width: 850px; 
-            margin: 30px auto; 
-            padding: 0 20px;
-        }
-
-        .section-card { 
-            background: var(--white); 
-            padding: 35px; 
-            margin-bottom: 25px; 
-            border-radius: 8px; 
-            border: 1px solid var(--border-color);
-        }
-
-        h2 { 
-            color: var(--text-dark); 
-            font-size: 1.4em;
-            font-weight: 500;
-            margin-top: 0;
-            margin-bottom: 20px;
+        /* Hero Section */
+        .hero {
             display: flex;
             align-items: center;
-            gap: 12px;
+            justify-content: space-between;
+            padding: 50px 10%;
+            min-height: 80vh;
         }
 
-        h2 i {
-            color: var(--google-blue);
+        .hero-text { flex: 1; }
+        .hero-text h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 4rem; 
+            line-height: 1.1;
+            margin-bottom: 20px;
         }
 
-        .skills-grid { 
-            display: flex; 
-            flex-wrap: wrap; 
-            gap: 10px; 
+        .hero-text p { font-size: 1.2rem; color: var(--accent); max-width: 500px; }
+
+        .hero-image { flex: 1; text-align: right; }
+        .hero-image img {
+            width: 400px;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 5px;
+            filter: grayscale(100%); /* Kayla Padilla often uses grayscale for a classic look */
+            transition: 0.5s;
+        }
+        .hero-image img:hover { filter: grayscale(0%); }
+
+        /* Sections */
+        .container { padding: 80px 10%; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 40px; }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
-        .skill-badge { 
-            background: var(--bg-light); 
-            color: var(--text-dark); 
-            padding: 8px 16px; 
-            border-radius: 20px; 
-            font-size: 0.9em;
-            font-weight: 500;
-            border: 1px solid var(--border-color);
-            transition: all 0.2s ease;
-        }
-
-        .skill-badge:hover { 
-            background: var(--google-blue); 
-            color: var(--white); 
-            border-color: var(--google-blue);
-            transform: translateY(-2px); 
-        }
-
-        .qualification-item {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 15px;
-        }
-
-        .qualification-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 8px;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: var(--google-blue);
-        }
-
-        .projects-grid { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 20px; 
-        }
-
-        @media(max-width: 600px) { 
-            .projects-grid { grid-template-columns: 1fr; } 
-        }
-
-        .project-card { 
-            background: var(--white); 
-            padding: 20px; 
-            border: 1px solid var(--border-color); 
-            border-radius: 8px; 
-            transition: all 0.3s ease;
+        .project-card {
             text-decoration: none;
             color: inherit;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            display: block;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            transition: 0.3s;
         }
+        .project-card:hover { border-bottom-color: var(--text); }
+        .project-card h3 { font-size: 1.5rem; margin: 15px 0 5px 0; }
+        .project-card p { color: var(--accent); font-size: 0.9rem; }
 
-        .project-card:hover { 
-            transform: translateY(-4px); 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
-            border-color: var(--google-blue);
-        }
-
-        .project-card strong { 
-            color: var(--text-dark); 
-            font-size: 1.15em; 
-            font-weight: 500;
-            display: block; 
-            margin-bottom: 8px; 
-        }
-
-        .project-card p {
-            color: var(--google-grey);
-            font-size: 0.95em;
-            margin: 0 0 15px 0;
-        }
-
-        .project-link {
-            color: var(--google-blue);
-            font-size: 0.9em;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .contact-grid { 
-            display: flex; 
-            flex-wrap: wrap; 
-            gap: 15px; 
-        }
-
-        .contact-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: var(--white);
-            color: var(--text-dark);
+        /* Contact Section */
+        .contact { background: var(--light-grey); text-align: center; padding: 100px 10%; }
+        .contact a {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--text);
             text-decoration: none;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            font-weight: 500;
-            font-size: 0.95em;
-            transition: all 0.2s ease;
+            margin: 20px 0;
         }
+        .socials { margin-top: 30px; display: flex; justify-content: center; gap: 30px; font-size: 1.5rem; }
+        .socials a { font-family: 'Inter'; font-size: 1rem; color: var(--accent); }
 
-        .contact-button:hover { 
-            background: var(--bg-light);
-            border-color: var(--google-grey);
-        }
+        footer { padding: 40px 10%; text-align: center; font-size: 0.8rem; color: #999; }
 
-        .contact-button.github-btn { 
-            background: #24292e; 
-            color: var(--white);
-            border-color: #24292e;
-        }
-
-        .contact-button.github-btn:hover { 
-            background: #2f363d; 
+        @media (max-width: 768px) {
+            .hero { flex-direction: column-reverse; text-align: center; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .hero-image img { width: 100%; height: auto; }
+            .hero-image { margin-bottom: 40px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="hero-section">
-        <div class="profile-container">
-            <!-- Replace the URL below with your own image if needed -->
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop" alt="Anna Mmary" class="profile-img">
+    <nav>
+        <div class="logo">AM.</div>
+        <div class="menu">Portfolio 2024</div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1 id="name">Loading...</h1>
+            <p id="profile"></p>
         </div>
-        <h1 id="name">Loading...</h1>
-        <div class="subtitle">Data Science Student</div>
-        <p id="profile" class="bio"></p>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1531123897727-8f129e16fd3c?q=80&w=600&auto=format&fit=crop" alt="Anna Mmary">
+        </div>
+    </section>
+
+    <div class="container" id="projects-section">
+        <h2>Selected Works</h2>
+        <div class="projects-grid" id="projects">
+            </div>
     </div>
 
-    <div class="container">
-        <div class="section-card">
-            <h2><i class="fa-solid :fa-laptop-code"></i> Core Skills</h2>
-            <div id="skills" class="skills-grid"></div>
+    <section class="contact">
+        <h2>Let's talk.</h2>
+        <a id="email-link" href="#">hello@annammary.com</a>
+        <div class="socials">
+            <a id="github-link" target="_blank" href="#"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a id="phone-link" href="#"><i class="fa-solid fa-phone"></i> Phone</a>
         </div>
+    </section>
 
-        <div class="section-card">
-            <h2><i class="fa-solid fa-graduation-cap"></i> Academic Qualifications</h2>
-            <div id="qualifications"></div>
-        </div>
-
-        <div class="section-card">
-            <h2><i class="fa-solid fa-folder-open"></i> Featured Projects</h2>
-            <div id="projects" class="projects-grid"></div>
-        </div>
-
-        <div class="section-card">
-            <h2><i class="fa-solid fa-paper-plane"></i> Get In Touch</h2>
-            <div id="contact" class="contact-grid"></div>
-        </div>
-    </div>
+    <footer>
+        &copy; 2024 Anna Mmary Portfolio. Powered by Cloud Computing.
+    </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
-    

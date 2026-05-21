@@ -1,62 +1,46 @@
-const API_URL = 'https://anna-portfolio-api.onrender.com/api/portfolio';
+// REPLACE THIS URL with your actual Render backend URL
+const API_URL = 'https://anna-portifolio-api.onrender.com/api/portfolio';
 
 async function fetchPortfolio() {
     try {
         const response = await fetch(API_URL);
+        
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
         const data = await response.json();
 
+        // Update Name and Profile
         document.getElementById('name').innerText = data.name;
         document.getElementById('profile').innerText = data.profile;
 
-        const skillsContainer = document.getElementById('skills');
-        data.skills.forEach(skill => {
-            const span = document.createElement('span');
-            span.className = 'skill-badge';
-            span.innerText = skill;
-            skillsContainer.appendChild(span);
-        });
-
-        const qualContainer = document.getElementById('qualifications');
-        data.qualifications.forEach(q => {
-            const div = document.createElement('div');
-            div.className = 'qualification-item';
-            div.innerHTML = `<strong>${q.Year}</strong> - ${q.Certification}`;
-            qualContainer.appendChild(div);
-        });
-
-        const projectGrid = document.getElementById('projects');
-        data.projects.forEach(p => {
-            const card = document.createElement('a');
-            card.className = 'project-card';
-            card.href = data.contact.github; 
-            card.target = '_blank';
-            
-            card.innerHTML = `
-                <div>
-                    <strong>${p.title}</strong>
-                    <p>${p.description}</p>
-                </div>
-                <span class="project-link">View Project <i class="fa-solid fa-arrow-right"></i></span>
+        // Update Projects
+        const projectsContainer = document.getElementById('projects');
+        projectsContainer.innerHTML = ''; // Clear loading state
+        
+        data.projects.forEach(project => {
+            const projectElement = document.createElement('a');
+            projectElement.href = data.contact.github;
+            projectElement.target = "_blank";
+            projectElement.className = 'project-card';
+            projectElement.innerHTML = `
+                <h3>${project.title}</h3>
+                <p>${project.description}</p>
             `;
-            projectGrid.appendChild(card);
+            projectsContainer.appendChild(projectElement);
         });
 
-        const contactDiv = document.getElementById('contact');
-        contactDiv.innerHTML = `
-            <a href="mailto:${data.contact.email}" class="contact-button">
-                <i class="fa-solid fa-envelope" style="color: #ea4335;"></i> Email Me
-            </a>
-            <a href="tel:${data.contact.phone}" class="contact-button">
-                <i class="fa-solid fa-phone" style="color: #34a853;"></i> Call Me
-            </a>
-            <a href="${data.contact.github}" target="_blank" class="contact-button github-btn">
-                <i class="fa-brands fa-github"></i> GitHub Profile
-            </a>
-        `;
+        // Update Contacts
+        document.getElementById('email-link').href = `mailto:${data.contact.email}`;
+        document.getElementById('email-link').innerText = data.contact.email;
+        document.getElementById('github-link').href = data.contact.github;
+        document.getElementById('phone-link').href = `tel:${data.contact.phone}`;
 
     } catch (error) {
-        console.error("Error fetching data:", error);
-        document.getElementById('name').innerText = "Failed to load portfolio data.";
+        console.error('There was an error!', error);
+        document.getElementById('name').innerText = "Failed to load.";
+        document.getElementById('profile').innerText = "Please check if your Render backend is live.";
     }
 }
 
