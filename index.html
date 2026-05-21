@@ -61,7 +61,7 @@
             color: var(--accent-color);
         }
 
-        /* Hero Section Split Layout (Picha Kushoto, Bio Kulia) */
+        /* Hero Section Split Layout (Nafasi imepunguzwa hapa) */
         .hero-banner {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
@@ -69,12 +69,12 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 50px;
+            justify-content: flex-start; /* Huweka vitu karibu badala ya kusukumana mbali */
+            gap: 20px; 
             text-align: left;
         }
 
-        /* Picha ya Mraba (Square) upande wa Kushoto */
+        /* Picha Kubwa Zaidi ya Mraba upande wa Kushoto */
         .profile-wrapper {
             flex-shrink: 0;
             display: flex;
@@ -83,9 +83,9 @@
         }
 
         .profile-wrapper img {
-            width: 240px; /* Saizi kubwa zaidi */
-            height: 240px; /* Urefu sawa na upana kupata mraba kamili */
-            border-radius: 12px; /* Pembe laini kidogo badala ya duara */
+            width: 280px; 
+            height: 280px; 
+            border-radius: 12px; 
             object-fit: cover;
             border: 5px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 8px 20px rgba(0,0,0,0.25);
@@ -94,11 +94,11 @@
         /* Maelezo ya Bio upande wa Kulia */
         .hero-text-container {
             flex: 1;
-            max-width: 600px;
+            max-width: 650px;
         }
 
         .hero-banner h1 { 
-            margin: 0 0 15px 0; 
+            margin: 0 0 10px 0; 
             font-size: 2.6em; 
             font-weight: 600; 
         }
@@ -190,7 +190,7 @@
                 flex-direction: column;
                 text-align: center;
                 padding: 40px 20px;
-                gap: 25px;
+                gap: 20px;
             }
             .hero-banner p { text-align: center; }
             .projects-layout { grid-template-columns: 1fr; } 
@@ -277,12 +277,12 @@
     </nav>
 
     <div class="hero-banner">
-        <!-- Kushoto: Picha Kubwa ya Mraba -->
+        <!-- Kushoto: Picha Kubwa ya Mraba iliyosogezwa karibu -->
         <div class="profile-wrapper">
-            <img src="anna.jpg.jpeg" alt="Anna Mmary" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=240&auto=format&fit=crop'">
+            <img src="anna.jpg.jpeg" alt="Anna Mmary" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=280&auto=format&fit=crop'">
         </div>
 
-        <!-- Kulia: Bio na Jina -->
+        <!-- Kulia: Bio na Jina lililosogezwa karibu -->
         <div class="hero-text-container">
             <h1 id="name">Loading...</h1>
             <p id="profile"></p>
