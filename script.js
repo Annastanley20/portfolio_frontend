@@ -1,4 +1,4 @@
-const API_URL = 'https://anna-portfolio-api.onrender.com/api/portfolio';
+const API_URL = 'https://anna-portifolio-api.onrender.com/api/portfolio';
 
 async function fetchPortfolio() {
     try {
