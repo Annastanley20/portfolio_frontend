@@ -3,39 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anna Mmary - Personal Portfolio</title>
+    <title>Anna Mmary - Professional Data Science Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f4f7f6; color: #333; }
-        .container { max-width: 800px; margin: 30px auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        h1 { color: #2c3e50; font-size: 2.5em; border-bottom: 2px solid #3498db; padding-bottom: 10px; margin-top: 0; }
-        h2 { color: #2980b9; margin-top: 30px; font-size: 1.5em; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-        p { font-size: 1.1em; color: #555; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 8px; font-size: 1.05em; }
-        .project-card { background: #f9f9f9; padding: 15px; margin-bottom: 15px; border-left: 4px solid #3498db; border-radius: 4px; }
-        .project-card strong { color: #2c3e50; font-size: 1.1em; }
-        a { color: #3498db; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+        :root {
+            --google-blue: #1a73e8;
+            --google-grey: #5f6368;
+            --text-dark: #202124;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --border-color: #dadce0;
+        }
+
+        body { 
+            font-family: 'Google Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            padding: 0; 
+            background-color: var(--bg-light); 
+            color: var(--text-dark); 
+        }
+
+        .hero-section {
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .profile-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--google-blue);
+            padding: 4px;
+            background-color: var(--white);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .hero-section h1 { 
+            margin: 15px 0 5px 0; 
+            font-size: 2.4em; 
+            font-weight: 500;
+            color: var(--text-dark); 
+        }
+
+        .hero-section .subtitle { 
+            font-size: 1.2em; 
+            color: var(--google-blue); 
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .hero-section .bio { 
+            font-size: 1.05em; 
+            color: var(--google-grey); 
+            max-width: 650px; 
+            margin: 0 auto; 
+        }
+
+        .container { 
+            max-width: 850px; 
+            margin: 30px auto; 
+            padding: 0 20px;
+        }
+
+        .section-card { 
+            background: var(--white); 
+            padding: 35px; 
+            margin-bottom: 25px; 
+            border-radius: 8px; 
+            border: 1px solid var(--border-color);
+        }
+
+        h2 { 
+            color: var(--text-dark); 
+            font-size: 1.4em;
+            font-weight: 500;
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2 i {
+            color: var(--google-blue);
+        }
+
+        .skills-grid { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 10px; 
+        }
+
+        .skill-badge { 
+            background: var(--bg-light); 
+            color: var(--text-dark); 
+            padding: 8px 16px; 
+            border-radius: 20px; 
+            font-size: 0.9em;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+        }
+
+        .skill-badge:hover { 
+            background: var(--google-blue); 
+            color: var(--white); 
+            border-color: var(--google-blue);
+            transform: translateY(-2px); 
+        }
+
+        .qualification-item {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .qualification-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--google-blue);
+        }
+
+        .projects-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 20px; 
+        }
+
+        @media(max-width: 600px) { 
+            .projects-grid { grid-template-columns: 1fr; } 
+        }
+
+        .project-card { 
+            background: var(--white); 
+            padding: 20px; 
+            border: 1px solid var(--border-color); 
+            border-radius: 8px; 
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
+            border-color: var(--google-blue);
+        }
+
+        .project-card strong { 
+            color: var(--text-dark); 
+            font-size: 1.15em; 
+            font-weight: 500;
+            display: block; 
+            margin-bottom: 8px; 
+        }
+
+        .project-card p {
+            color: var(--google-grey);
+            font-size: 0.95em;
+            margin: 0 0 15px 0;
+        }
+
+        .project-link {
+            color: var(--google-blue);
+            font-size: 0.9em;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .contact-grid { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 15px; 
+        }
+
+        .contact-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--white);
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            font-weight: 500;
+            font-size: 0.95em;
+            transition: all 0.2s ease;
+        }
+
+        .contact-button:hover { 
+            background: var(--bg-light);
+            border-color: var(--google-grey);
+        }
+
+        .contact-button.github-btn { 
+            background: #24292e; 
+            color: var(--white);
+            border-color: #24292e;
+        }
+
+        .contact-button.github-btn:hover { 
+            background: #2f363d; 
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+
+    <div class="hero-section">
+        <div class="profile-container">
+            <!-- Replace the URL below with your own image if needed -->
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop" alt="Anna Mmary" class="profile-img">
+        </div>
         <h1 id="name">Loading...</h1>
-        <p id="profile"></p>
-        
-        <h2>Skills</h2>
-        <ul id="skills"></ul>
+        <div class="subtitle">Data Science Student</div>
+        <p id="profile" class="bio"></p>
+    </div>
 
-        <h2>Qualifications</h2>
-        <ul id="qualifications"></ul>
+    <div class="container">
+        <div class="section-card">
+            <h2><i class="fa-solid :fa-laptop-code"></i> Core Skills</h2>
+            <div id="skills" class="skills-grid"></div>
+        </div>
 
-        <h2>Projects</h2>
-        <div id="projects"></div>
+        <div class="section-card">
+            <h2><i class="fa-solid fa-graduation-cap"></i> Academic Qualifications</h2>
+            <div id="qualifications"></div>
+        </div>
 
-        <h2>Contact Information</h2>
-        <p id="contact"></p>
+        <div class="section-card">
+            <h2><i class="fa-solid fa-folder-open"></i> Featured Projects</h2>
+            <div id="projects" class="projects-grid"></div>
+        </div>
+
+        <div class="section-card">
+            <h2><i class="fa-solid fa-paper-plane"></i> Get In Touch</h2>
+            <div id="contact" class="contact-grid"></div>
+        </div>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
+    
