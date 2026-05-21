@@ -3,151 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anna Mmary | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Anna Mmary - Academic Data Science Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg: #ffffff;
-            --text: #1a1a1a;
-            --accent: #555555;
-            --light-grey: #f9f9f9;
+            --primary-bg: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-main: #2c3e50;
+            --text-muted: #7f8c8d;
+            --accent-color: #3498db;
+            --accent-hover: #2980b9;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: var(--bg); 
-            color: var(--text); 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
             line-height: 1.6;
         }
 
-        /* Navigation */
-        nav {
-            padding: 30px 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.9);
-            z-index: 1000;
+        /* Hero Section with Modern Background Color */
+        .hero-banner {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        nav .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; }
-
-        /* Hero Section */
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 50px 10%;
-            min-height: 80vh;
+        .profile-wrapper {
+            margin-bottom: 15px;
         }
 
-        .hero-text { flex: 1; }
-        .hero-text h1 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 4rem; 
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .hero-text p { font-size: 1.2rem; color: var(--accent); max-width: 500px; }
-
-        .hero-image { flex: 1; text-align: right; }
-        .hero-image img {
-            width: 400px;
-            height: 500px;
+        .profile-wrapper img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
             object-fit: cover;
-            border-radius: 5px;
-            filter: grayscale(100%); /* Kayla Padilla often uses grayscale for a classic look */
-            transition: 0.5s;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
-        .hero-image img:hover { filter: grayscale(0%); }
 
-        /* Sections */
-        .container { padding: 80px 10%; }
-        h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 40px; }
+        .hero-banner h1 { margin: 10px 0; font-size: 2.3em; font-weight: 600; }
+        .hero-banner p { font-size: 1.1em; opacity: 0.9; max-width: 600px; margin: 0 auto; }
 
-        /* Projects Grid */
-        .projects-grid {
+        .main-container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .portfolio-card {
+            background: var(--card-bg);
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid #eef2f5;
+        }
+
+        h2 {
+            font-size: 1.4em;
+            color: #1e3c72;
+            border-bottom: 2px solid #eef2f5;
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Clickable Interactive Skills badges */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-item {
+            background-color: #eef2f7;
+            color: #2a5298;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .skill-item:hover {
+            background-color: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Qualifications Styling */
+        .qual-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .qual-list li {
+            padding: 12px 15px;
+            background: #fafbfc;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent-color);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Clickable Dynamic Project Cards */
+        .projects-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
-        .project-card {
+        @media(max-width: 600px) { .projects-layout { grid-template-columns: 1fr; } }
+
+        .clickable-project-card {
+            background: #fafbfc;
+            border: 1px solid #eef2f5;
+            padding: 20px;
+            border-radius: 8px;
             text-decoration: none;
             color: inherit;
-            display: block;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
-            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
         }
-        .project-card:hover { border-bottom-color: var(--text); }
-        .project-card h3 { font-size: 1.5rem; margin: 15px 0 5px 0; }
-        .project-card p { color: var(--accent); font-size: 0.9rem; }
 
-        /* Contact Section */
-        .contact { background: var(--light-grey); text-align: center; padding: 100px 10%; }
-        .contact a {
+        .clickable-project-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .clickable-project-card strong {
+            color: #1e3c72;
+            font-size: 1.15em;
             display: block;
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .clickable-project-card p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            margin: 0 0 15px 0;
+        }
+
+        .project-action-text {
+            color: var(--accent-color);
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        /* Clickable Contact Links */
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .clickable-contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #1e3c72;
+            color: white;
             text-decoration: none;
-            margin: 20px 0;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.95em;
+            transition: background 0.2s;
         }
-        .socials { margin-top: 30px; display: flex; justify-content: center; gap: 30px; font-size: 1.5rem; }
-        .socials a { font-family: 'Inter'; font-size: 1rem; color: var(--accent); }
 
-        footer { padding: 40px 10%; text-align: center; font-size: 0.8rem; color: #999; }
-
-        @media (max-width: 768px) {
-            .hero { flex-direction: column-reverse; text-align: center; }
-            .hero-text h1 { font-size: 2.5rem; }
-            .hero-image img { width: 100%; height: auto; }
-            .hero-image { margin-bottom: 40px; }
-        }
+        .clickable-contact-btn:hover { background: var(--accent-color); }
+        .clickable-contact-btn.github-color { background: #24292e; }
+        .clickable-contact-btn.github-color:hover { background: #444; }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">AM.</div>
-        <div class="menu">Portfolio 2024</div>
-    </nav>
-
-    <section class="hero">
-        <div class="hero-text">
-            <h1 id="name">Loading...</h1>
-            <p id="profile"></p>
+    <div class="hero-banner">
+        <div class="profile-wrapper">
+            <!-- Modern Placeholder profile picture -->
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop" alt="Anna Mmary">
         </div>
-        <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1531123897727-8f129e16fd3c?q=80&w=600&auto=format&fit=crop" alt="Anna Mmary">
-        </div>
-    </section>
-
-    <div class="container" id="projects-section">
-        <h2>Selected Works</h2>
-        <div class="projects-grid" id="projects">
-            </div>
+        <h1 id="name">Loading...</h1>
+        <p id="profile"></p>
     </div>
 
-    <section class="contact">
-        <h2>Let's talk.</h2>
-        <a id="email-link" href="#">hello@annammary.com</a>
-        <div class="socials">
-            <a id="github-link" target="_blank" href="#"><i class="fa-brands fa-github"></i> GitHub</a>
-            <a id="phone-link" href="#"><i class="fa-solid fa-phone"></i> Phone</a>
+    <div class="main-container">
+        <!-- SKILLS SECTION -->
+        <div class="portfolio-card">
+            <h2><i class="fa-solid fa-brain"></i> Professional Skills</h2>
+            <div id="skills" class="skills-grid"></div>
         </div>
-    </section>
 
-    <footer>
-        &copy; 2024 Anna Mmary Portfolio. Powered by Cloud Computing.
-    </footer>
+        <!-- QUALIFICATIONS SECTION -->
+        <div class="portfolio-card">
+            <h2><i class="fa-solid fa-graduation-cap"></i> Academic Qualifications</h2>
+            <ul id="qualifications" class="qual-list"></ul>
+        </div>
+
+        <!-- PROJECTS SECTION -->
+        <div class="portfolio-card">
+            <h2><i class="fa-solid fa-code-branch"></i> Practical Projects</h2>
+            <div id="projects" class="projects-layout"></div>
+        </div>
+
+        <!-- CONTACT SECTION -->
+        <div class="portfolio-card">
+            <h2><i class="fa-solid fa-address-book"></i> Connect with Me</h2>
+            <div id="contact" class="contact-flex"></div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
