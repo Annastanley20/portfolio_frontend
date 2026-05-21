@@ -70,11 +70,11 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 40px;
+            gap: 50px;
             text-align: left;
         }
 
-        /* Picha kubwa upande wa Kushoto */
+        /* Picha ya Mraba (Square) upande wa Kushoto */
         .profile-wrapper {
             flex-shrink: 0;
             display: flex;
@@ -83,12 +83,12 @@
         }
 
         .profile-wrapper img {
-            width: 200px; /* Tumeongeza saizi hapa */
-            height: 200px;
-            border-radius: 50%;
+            width: 240px; /* Saizi kubwa zaidi */
+            height: 240px; /* Urefu sawa na upana kupata mraba kamili */
+            border-radius: 12px; /* Pembe laini kidogo badala ya duara */
             object-fit: cover;
-            border: 5px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
         }
 
         /* Maelezo ya Bio upande wa Kulia */
@@ -99,7 +99,7 @@
 
         .hero-banner h1 { 
             margin: 0 0 15px 0; 
-            font-size: 2.5em; 
+            font-size: 2.6em; 
             font-weight: 600; 
         }
         
@@ -190,7 +190,7 @@
                 flex-direction: column;
                 text-align: center;
                 padding: 40px 20px;
-                gap: 20px;
+                gap: 25px;
             }
             .hero-banner p { text-align: center; }
             .projects-layout { grid-template-columns: 1fr; } 
@@ -265,7 +265,7 @@
 </head>
 <body>
 
-    <!-- Header Navigation Menu (Clickable Anchor Links) -->
+    <!-- Header Navigation Menu -->
     <nav>
         <div class="logo">AM.</div>
         <div class="menu">
@@ -277,12 +277,12 @@
     </nav>
 
     <div class="hero-banner">
-        <!-- Upande wa Kushoto: Picha Kubwa -->
+        <!-- Kushoto: Picha Kubwa ya Mraba -->
         <div class="profile-wrapper">
-            <img src="anna.jpg.jpeg" alt="Anna Mmary" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop'">
+            <img src="anna.jpg.jpeg" alt="Anna Mmary" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=240&auto=format&fit=crop'">
         </div>
 
-        <!-- Upande wa Kulia: Jina na Maelezo ya Bio -->
+        <!-- Kulia: Bio na Jina -->
         <div class="hero-text-container">
             <h1 id="name">Loading...</h1>
             <p id="profile"></p>
